@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <title>Naoya0818 第5回課題</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <h1>観光プラン提案アプリ</h1>
+    <h2>説明</h2>
+    <div>
+        授業で扱ったChatGPTを使用したプログラムを基にして、ChatGPTを活用して観光プラン提案プログラムを作りました。
+        </div>
+        <div>
+            なんとなく行きたい地域などを伝えると、その場所での観光プランを提案してくれます。<br>
+            どこに行こうか悩んでる時の参考になります。
+        </div>
+    <h2>ソースコード</h2>
+    <div>
+        <pre><code>
+        from openai import OpenAI
+※ChatGPTのAPIコードを使用
+client = OpenAI(api_key="※APIコードを入力")
+
+# 複数の入力を受け取る
+region = input("どの地域や都道府県を観光したい？：")
+days = input("何泊したい？（例：2泊3日など）：")
+interest = input("どんなことに興味がありますか？（例：歴史、自然、グルメなど）：")
+budget = input("予算の目安は？（例：3万円以内など）：")
+
+# ユーザーの情報をまとめて質問文にする
+question = f"""
+次の条件で観光プランを提案してください：
+- 地域：{region}
+- 日数：{days}
+- 興味：{interest}
+- 予算：{budget}
+出典も明記し、正確な情報を提示してください。
+"""
+
+response = client.chat.completions.create(
+    model="gpt-4o-mini",
+    messages=[{"role": "user", "content": question}]
+)
+
+print("\nAIの答え：\n", response.choices[0].message.content)
+</code></pre>
+    </div>
+    <h2>機能</h2>
+    <div>
+question = f"""～"""というものを使いましたが、これは複数行のテンプレートに変数を埋め込むという意味になります。
+    </div>
+    <h2>感想</h2>
+    <div>
+        自分自身、最近どこかに旅行に行きたいと思っていたのでこのようなプログラムにしました。<br>
+        ChatGPTに質問してみると、様々な回答を得られるので、凄く参考になりました。
+    </div>
+
+</body>
+</html>
