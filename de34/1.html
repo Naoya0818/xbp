@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Naoya0818 第1回</title>
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+   <h1>第1回</h1>
+   <h2>Arduinoとは</h2>
+   <div>
+    電子工作やロボット制御ができるように作られた、初心者向けのコンピューター基板。<br>
+    Arduinoは主に「ハードウェア」と「ソフトウェア」の2つから成り立つ。
+    </div>
+    <div>
+    ハードウェア（基板）：マイコン（マイクロコンピュータ）が載った板。センサーやスイッチを繋ぐ。<br>
+    ソフトウェア（Arduino IDE）：パソコンでプログラムを書き、Arduinoに送り込むための専用ソフト。
+    </div>
+   </div>
+   <h2>Lチカ</h2>
+   <div>
+    Lチカを行うことにより、回路、電源、プログラム、書き込み、これら全てが正常なことが確認できる。<br>
+    そのため、Lチカは電子工作の電子工作の基礎となる。
+    </div>
+    <div>
+    回路：LEDの向きやピン番号。<br>
+    電源：給電されているか、適切な電圧か。<br>
+    プログラム：HIGH、LOWが書けているか、待機時間は十分か。<br>
+    書き込み：ポートは正しいか。
+    </div>
+    <div>
+    などといった確認が必要なため。
+    </div>
+    <img src="./images/L_Chika.png" width="50%">
+    <div>
+        setup()：電源を入れた直後、1回だけ実行。<br>
+        loop()：setupの後、繰り返し実行。<br>
+        pinmode(13,output);：13番ピンを出力に設定<br>
+        digitalWrite(13,HIGH);：13番ピンの電圧をHIGH（高い）にし、LOWは反対に低くする。<br>
+        delay(500);：500ミリ秒の間、プログラムを一時停止する。
+    </div>
+    <h2>明るさ測定</h2>
+    <div>
+        デジタルの世界はオンかオフしかないのに対して、アナログは連続した値の世界。<br>
+        Cdsセルは光の強さによって抵抗値が変わる部品。明るい時に小さくなり、暗くなると大きくなる。
+    </div>
+    <img src="./images/Cds.png" width="50%">
+    
+    <div>
+        Serial.bigin(9600);：通信速度を設定し、通信を開始。<br>
+        int val=0;：変数valを用意し、初期値としての０。<br>
+        val=analogRead(1)：A1ピンの電圧を読み取り、valに代入。<br>
+        Serial.printli(val);：valの中身をシリアルモニタに表示し、改行する。
+    </div>
+    <h2>振り返り</h2>
+    <div>
+        なんとかLEDライトを明るさに合わせて動作させることができました。<br>
+        電子工作は覚えることが多く難しいですが、扱っていくうちに徐々に慣れていきたいです。
+    </div>
+   </div>
+    </body>
+</html>
