@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naoya0818 第2回</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>第2回</h1>
+    <h2>ステッピングモーター</h2>
+    <div>
+        ステッピングモーターは、電気信号を入力することで一定の角度だけ回転するモーター。<br>
+        回転数だけでなく、角度も制御することができる。
+    </div>
+    <h2></h2>
+    <div>
+        ChatGPTを使い、暗くなったらLEDが点滅し、モーターも回るようにすることで営業中ということを知らせる看板を再現してみた。
+    </div>
+    <div class="video"><iframe width="560" height="315" src="https://www.youtube.com/embed/Z29XG9WW7tk?si=WIC16XT-jgYfP1mW" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <h2>プログラム</h2>
+        <pre><code>
+            const int DIR  = 8;
+const int STEP = 9;
+const int LIGHT_PIN = A1;
+const int LED_PIN = 13;   // LED追加
+
+int threshold = 200;
+
+bool ledState = false;
+unsigned long previousMillis = 0;
+int interval = 750; // 点滅間隔（ms）
+
+void setup() {
+  Serial.begin(9600);
+
+  pinMode(DIR, OUTPUT);
+  pinMode(STEP, OUTPUT);
+  pinMode(LED_PIN, OUTPUT);
+
+  digitalWrite(DIR, LOW);
+  digitalWrite(STEP, LOW);
+}
+
+void loop() {
+  int val = analogRead(LIGHT_PIN);
+  Serial.println(val);
+
+  if (val > threshold) {
+    // モーター回転
+    digitalWrite(DIR, HIGH);
+    stepMotor(7500);
+
+    // LED点滅（時間で制御）
+    unsigned long currentMillis = millis();
+    if (currentMillis - previousMillis >= interval) {
+      previousMillis = currentMillis;
+      ledState = !ledState;
+      digitalWrite(LED_PIN, ledState);
+    }
+
+  } else {
+    // 明るいときはLED消灯
+    digitalWrite(LED_PIN, LOW);
+  }
+}
+
+void stepMotor(int delaytime){
+  digitalWrite(STEP, HIGH);
+  delayMicroseconds(delaytime);
+  digitalWrite(STEP, LOW);
+  delayMicroseconds(delaytime);
+}
+        </code></pre>
+        <div>
+            bool ledState = false;<br>
+            ・LEDの現在の状態を保持<br>
+            unsigned long previousMillis = 0;<br>
+            ・前回LEDを切り替えた時間を記録<br>
+            unsigned long currentMillis = millis();<br>
+            ・現在の経過時間を取得<br>
+            if (currentMillis - previousMillis >= interval)<br>
+            ・前回の切り替えからinterval以上経過しているか確認<br>
+            previousMillis = currentMillis;<br>
+            ・時間を更新<br>
+            ledState = !ledState;<br>
+            ・LEDの状態を反転<br>
+            void stepMotor(int delaytime){<br>
+            ・モーターを1ステップ動かす関数。delaytimeはパルスの間隔。
+        </div>
+        <h2>振り返り</h2>
+        今回は生成AIを使ってプログラムを作ってもらいましたが、一瞬で新しいプログラムを作ってくれるのは素晴らしいなと思いました。<br>
+        他の人の作品には自分では思いつかなかったものもありましたが、そのような作品を見ると別の角度からの考え方を養える気がします。
+</body>
+</html>
