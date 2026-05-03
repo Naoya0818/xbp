@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naoya0818 第3回</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>第3回</h1>
+    <h2>Flaskとは</h2>
+    <div>
+        Pythonで書かれた、軽量で拡張性の高いWebアプリケーションフレームワーク。<br>
+        マイクロフレームワークと呼ばれ、必要最低限の機能のみが搭載されている。<br>
+        シンプルで、自由度が高いことが特徴。<br>
+        PythonのデータをHTMLに送って表示をするという仕組み。
+    </div>
+    <h2>CSVの情報を表示してみる</h2>
+    <div>
+        CSVファイルの内容を読み込み、リンク付きでブラウザに表示するということをやりました。
+    </div>
+    <h3>Python</h3>
+    <img src="./images/Python.png" width="50%">
+    <div>
+        ・CSVファイルを読み込む<br>
+        ・各データの４列目(data[3])を、Googleマップのリンクに変換<br>
+        ・リストをmmlistとしてHTMLに渡す
+    </div>
+    <h3>HTML</h3>
+    <img src="./images/html.png" width="50%">
+    <div>
+        ・mmlistを1行ずつ処理<br>
+        ・data[1]が場所の時は、文字として表示<br>
+        ・それ以外は、data[1]を表示テキストにし、data[3]へのURLのリンクを表示
+    </div>
+    <h2>振り返り</h2>
+    <div>
+        Flaskは非常にシンプルなフレームワークということもあり、説明と一緒に見ていくとなんとなくですが理解することができました。<br>
+        Webサーバーの立ち上げと聞くと長いコードを書き込まなければいけないと思っていましたが、<br>
+        Flaskを使うことにより短いコードでもWebサーバーを立ち上げられるのは凄いと思いました。
+    </div>
+</body>
+</html>
