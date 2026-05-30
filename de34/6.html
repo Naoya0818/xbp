@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naoya0818 第6回</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>第6回</h1>
+    <h2>SQL分を使ったアプリ作成</h2>
+<h3>目的</h3>
+<div>
+「誰が」「何のタスク（Todo）を持っているか」をセットで一元管理できるシステム。
+</div>
+<h3>画面でできること（機能）</h3>
+<ol>
+<li>ユーザーの登録（名前・メアド）と削除ができる。※メアドは未入力でもOK。</li>
+<li>登録したユーザーを選んで、新しいタスクを割り当て・追加できる。</li>
+<li>タスクごとに「完了（打ち消し線）」と「削除」の切り替えができる。</li>
+</ol>
+<h3>裏側の仕組み（データのつながり）</h3>
+<ol>
+<li>「1対多」の紐づけ: 1人のユーザーが複数のタスクを持てる設計。</li>
+<li>連動削除: ユーザーを削除すると、その人が担当していたタスクも自動的に処理される安全設計。</li>
+</ol>
+<h3>動画</h3>
+<div video><iframe width="560" height="315" src="https://www.youtube.com/embed/ahwXCoBW9XU?si=2crKoxNORY1MIgUe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+
+</body>
+</html>
